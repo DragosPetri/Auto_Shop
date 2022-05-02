@@ -8,7 +8,8 @@ private:
 
 public:
     Car_Repository(const std::vector<Car> &storage);
-
+    void addToEnd(Car car);
+    bool remove(Car car);
     const std::vector<Car> &getStorage() const;
 
     void setStorage(const std::vector<Car> &storage);

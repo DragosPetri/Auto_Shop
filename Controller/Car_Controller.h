@@ -12,7 +12,6 @@ public:
     const Car_Repository &getCarRepo() const;
 
     void setCarRepo(const Car_Repository &carRepo);
-
     void add_car(Car car);
     bool delete_car(Car car);
     bool update_car(Car old_car, Car new_car);
