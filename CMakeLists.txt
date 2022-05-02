@@ -22,4 +22,5 @@ add_executable(Auto_Shop
         UI/User.cpp
         UI/User.h
         UI/UserInterface.cpp
-        UI/UserInterface.h)
+        UI/UserInterface.h
+        App.cpp)
