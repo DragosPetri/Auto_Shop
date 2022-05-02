@@ -1,0 +1,123 @@
+@startuml
+skinparam groupInheritance 2
+
+together {
+class App {
++ main()
+}
+
+namespace UI {
+
+class User {
++ void showMenu()
+}
+
+class Manager {
++ void showMenu()
+}
+
+class Client {
+- favorites : vector<Car>
++ void showMenu()
++ vector<Car> get_favorites()
++ void set_favorties(vector<Car>)
+
+}
+
+User <|-- Manager
+User <|-- Client
+
+class UserInterface {
+- user : User
+- auto_ctrl : Controller
++ void simple_init()
+}
+
+}
+
+namespace Controller {
+
+class Car_Controller {
+- car_repo : Car_Repository
+
++ Car_Controller(Car_Repository car_repo)
++ Car_Repository get_car_repo()
++ void set_car_repo(Car_Repository car_repo)
++ void add_car(Car car)
++ bool delete_car(Car car)
++ bool update_car(Car old_car, Car new_car)
++ vector<Car> search_car(string car_model, string car_make)
++ vector<Car> filter_car(int car_age, int car_km)
++ vector<Car> asc_sort()
+}
+
+}
+
+namespace Repository {
+
+class Car_Repository {
+- storage : vector<Car>
+
++ Car_Repository(vector<Car>)
++ void set_storage()
++ vector<Car> get_storage()
+}
+
+}
+}
+
+namespace Domain {
+
+class Car {
+- car_model : string
+- car_make : string
+- registration_year : string
+- kilometrage : int
+- price : int
+- charge_time_minutes : int
+- range : int
+..Simple_Getters..
++ string get_car_model()
++ string get_car_make()
++ string get_registration_year()
++ int get_kilometrage()
++ int get_price()
++ int get_charge_time_minutes()
++ int get_Range()
+..Special_Getters..
++ int get_registration_year_as_num()
+..Setters..
++ void set_car_model()
++ void set_car_make()
++ void set_registration_year()
++ void set_kilometrage()
++ void set_price()
++ void set_charge_time_minutes()
++ void set_Range()
+..Constructors..
++ Car( ... )
+
+}
+note right of Car::Car
+    Explicit request all attributes!
+end note
+
+
+note right of Car::set_car_model
+    Take care of exceptions here
+    for all setters!
+end note
+
+
+}
+
+
+UI ..|> Controller : USES
+Controller .right.|> Repository : USES
+App ..|>  UI : Creates
+App ..|>  Controller : Creates
+App ..|>  Repository : Creates
+
+
+
+@enduml
