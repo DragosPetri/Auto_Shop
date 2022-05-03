@@ -4,13 +4,14 @@
 
 class Car_Controller {
 private:
-    Car_Repository car_repo;
+//    Car_Repository car_repo;
+    std::shared_ptr<Car_Repository> car_repo = std::make_shared<Car_Repository>();
 
 public:
-    Car_Controller(const Car_Repository &carRepo);
-    const Car_Repository &getCarRepo() const;
-
-    void setCarRepo(const Car_Repository &carRepo);
+    Car_Controller(std::shared_ptr<Car_Repository> carRepo);
+    std::shared_ptr<Car_Repository> getCarRepo() const;
+    Car_Controller();
+    void setCarRepo(std::shared_ptr<Car_Repository> carRepo);
     void add_car(Car car);
     bool delete_car(Car car);
     bool update_car(Car old_car, Car new_car);
