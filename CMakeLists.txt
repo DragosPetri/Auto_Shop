@@ -9,6 +9,8 @@ include_directories(Repository)
 include_directories(UI)
 
 add_executable(Auto_Shop
+        UI/Ui.cpp
+        UI/Ui.h
         Controller/Car_Controller.cpp
         Controller/Car_Controller.h
         Domain/Car.cpp
