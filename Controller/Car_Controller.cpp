@@ -50,7 +50,7 @@ std::vector<Car> Car_Controller::search_car(std::string car_model, std::string c
 std::vector<Car> Car_Controller::filter_car(int car_km) {
     std::vector<Car> cars;
     for(int i=0;i<car_repo->getStorage().size();i++)
-        if(cars[i].getKilometrage()<=car_km)
+        if(car_repo->getStorage()[i].getKilometrage()<=car_km)
             cars.push_back(car_repo->getStorage()[i]);
     return cars;
 }
