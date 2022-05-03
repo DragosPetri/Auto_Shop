@@ -15,7 +15,7 @@ private:
 
 public:
     const std::string &getCarModel() const;
-
+    Car();
     const std::string &getCarMake() const;
 
     const std::string &getRegistrationYear() const;

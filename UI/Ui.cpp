@@ -11,7 +11,9 @@ void Ui::showClientMenu() {
     std::cout<< "1. Search Car"<< std::endl;
     std::cout<< "2. Filter Car"<< std::endl;
     std::cout<< "3. Sort Cars"<< std::endl;
-    std::cout<< "4. Sort Cars"<< std::endl;
+    std::cout<< "4. Add Favorites Cars"<< std::endl;
+    std::cout<< "5. Show Favorites"<< std::endl;
+
 }
 void Ui::startClientApp() {
     int choice;
@@ -41,12 +43,23 @@ void Ui::startClientApp() {
         if (choice == 3) {
             printCars(controller.asc_sort());
         }
+
+        if (choice == 4)
+        {
+            auto car = readCar();
+            controller.addToFavorites(car);
+        }
+        if (choice == 5)
+        {
+            controller.showFavorites();
+        }
+
     }
     while(choice != 0);
 }
 
 void Ui::printCar(Car car) {
-    std::cout << car.getCarModel() << " " << car.getCarMake() << " " << car.getRegistrationYear() << " " << car.getPrice() << car.getChargeTimeMinutes() << car.getKilometrage() << car.getRange() << std::endl;
+    std::cout << car.getCarModel() << " " << car.getCarMake() << " " << car.getRegistrationYear() << " " << car.getPrice() << " " << car.getChargeTimeMinutes() << " " <<car.getKilometrage() << " " <<car.getRange() << " " <<std::endl;
 }
 
 void Ui::printCars(std::vector<Car> cars) {

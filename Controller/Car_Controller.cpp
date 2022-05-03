@@ -3,7 +3,7 @@
 
 #include <utility>
 
-Car_Controller::Car_Controller(std::shared_ptr<Car_Repository> carRepo) : car_repo(std::move(carRepo)) {}
+Car_Controller::Car_Controller(std::shared_ptr<Car_Repository> &carRepo) : car_repo(std::move(carRepo)) {}
 
 std::shared_ptr<Car_Repository> Car_Controller::getCarRepo() const {
     return car_repo;
@@ -65,4 +65,19 @@ std::vector<Car> Car_Controller::asc_sort() {
         cars.push_back(car_repo->getStorage()[i]);
     }
     return cars;
+}
+
+void Car_Controller::addToFavorites(Car car) {
+    favorites.push_back(car);
+
+}
+
+void Car_Controller::showFavorites() {
+    for (auto &car: favorites)
+        printCar(car);
+
+}
+
+void Car_Controller::printCar(Car car) {
+    std::cout << car.getCarModel() << " " << car.getCarMake() << " " << car.getRegistrationYear() << " " << car.getPrice() << " " << car.getChargeTimeMinutes() << " " <<car.getKilometrage() << " " <<car.getRange() << " " <<std::endl;
 }

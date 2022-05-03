@@ -12,8 +12,9 @@ int main()
         Car("Prius", "Toyota", "23.02.2022", 1223, 250, 22, 11),
         Car("Dacia Spring", "Dacia", "24.02.2022", 1, 1, 0, 100),
         Car("E-Tron", "Audi", "25.02.2022", 150, 250, 22, 11)};
-    auto repo = Car_Repository(cars);
-    auto controller = Car_Controller(repo);
+
+    std::shared_ptr<Car_Repository> repo1 = std::make_shared<Car_Repository>(cars);
+    auto controller = Car_Controller(repo1);
     auto ui = Ui(controller);
     ui.start();
     return 0;
