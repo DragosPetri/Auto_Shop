@@ -17,12 +17,6 @@ add_executable(Auto_Shop
         Domain/Car.h
         Repository/Car_Repository.cpp
         Repository/Car_Repository.h
-        UI/Client.cpp
-        UI/Client.h
-        UI/Manager.cpp
-        UI/Manager.h
-        UI/User.cpp
-        UI/User.h
-        UI/UserInterface.cpp
-        UI/UserInterface.h
-        App.cpp)
+        App.cpp
+        UI/test.cpp
+        )

@@ -13,6 +13,8 @@ public:
     const std::vector<Car> &getStorage() const;
 
     void setStorage(const std::vector<Car> &storage);
+
+    Car_Repository();
 };
 
 

@@ -21,4 +21,6 @@ public:
     void addToFavorites(Car car);
     void printCar(Car car);
     void showFavorites();
+
+    Car_Controller();
 };

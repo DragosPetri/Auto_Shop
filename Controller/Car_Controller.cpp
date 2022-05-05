@@ -81,3 +81,7 @@ void Car_Controller::showFavorites() {
 void Car_Controller::printCar(Car car) {
     std::cout << car.getCarModel() << " " << car.getCarMake() << " " << car.getRegistrationYear() << " " << car.getPrice() << " " << car.getChargeTimeMinutes() << " " <<car.getKilometrage() << " " <<car.getRange() << " " <<std::endl;
 }
+
+Car_Controller::Car_Controller() {
+
+}

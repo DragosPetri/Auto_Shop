@@ -27,6 +27,10 @@ bool Car_Repository::remove(Car car) {
     return false;
 }
 
+Car_Repository::Car_Repository() {
+
+}
+
 
 
 
