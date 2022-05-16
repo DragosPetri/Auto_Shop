@@ -79,17 +79,11 @@ void Car_Controller::showFavorites() {
 }
 
 void Car_Controller::printCar(Car car) {
-    std::cout << car.getCarModel() << " " << car.getCarMake() << " " << car.getRegistrationYear() << " " << car.getPrice() << " " << car.getChargeTimeMinutes() << " " <<car.getKilometrage() << " " <<car.getRange() << " " <<std::endl;
+    std::cout << car.getId() << car.getCarModel() << " " << car.getCarMake() << " " << car.getRegistrationYear() << " " << car.getPrice() << " " << car.getChargeTimeMinutes() << " " <<car.getKilometrage() << " " <<car.getRange() << " " <<std::endl;
 }
 
 Car_Controller::Car_Controller() {
 
 }
 
-int Car_Controller::findId() {
-    int max=0;
-    for(int i=0;i<car_repo->getStorage().size();i++)
-        if(car_repo->getStorage()[i].getId()>max)
-            max=car_repo->getStorage()[i].getId();
-    return max+1;
-}
+

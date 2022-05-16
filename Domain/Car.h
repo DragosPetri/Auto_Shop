@@ -49,7 +49,7 @@ public:
 
     void setRange(int range);
 
-    Car(const std::string &carModel, const std::string &carMake, const std::string &registrationYear, int kilometrage,
+    Car(int id,const std::string &carModel, const std::string &carMake, const std::string &registrationYear, int kilometrage,
         int price, int chargeTimeMinutes, int range);
 };
 

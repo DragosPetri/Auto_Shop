@@ -11,7 +11,7 @@ public:
     void addToEnd(Car car);
     bool remove(Car car);
     const std::vector<Car> &getStorage() const;
-
+    int findId(Car car);
     void setStorage(const std::vector<Car> &storage);
 
     Car_Repository();
