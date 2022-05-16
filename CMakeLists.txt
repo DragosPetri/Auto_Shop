@@ -19,4 +19,7 @@ add_executable(Auto_Shop
         Repository/Car_Repository.h
         App.cpp
         UI/test.cpp
+        UI/test.h
+        RepoInFile/csv.cpp
+        RepoInFile/csv.h
         )
