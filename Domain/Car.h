@@ -12,13 +12,18 @@ private:
     int price;
     int charge_time_minutes;
     int range;
+    int ID;
 
 public:
     const std::string &getCarModel() const;
-    Car();
+
     const std::string &getCarMake() const;
 
     const std::string &getRegistrationYear() const;
+
+    void setId(int id);
+
+    int getId() const;
 
     int getRegistrationYearAsNum() const;
 

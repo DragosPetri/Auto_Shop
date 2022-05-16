@@ -1,24 +1,24 @@
 #include "Car_Controller.h"
 #include <bits/stdc++.h>
-
 #include <utility>
 
-Car_Controller::Car_Controller(std::shared_ptr<Car_Repository> &carRepo) : car_repo(std::move(carRepo)) {}
+Car_Controller::Car_Controller(std::shared_ptr<Car_Repository> &carRepo) : car_repo(carRepo) {}
 
 std::shared_ptr<Car_Repository> Car_Controller::getCarRepo() const {
     return car_repo;
 }
 
 void Car_Controller::setCarRepo(std::shared_ptr<Car_Repository> carRepo) {
-    car_repo = std::move(carRepo);
+    car_repo = carRepo;
 }
 
 void Car_Controller::add_car(Car car) {
-    car_repo->addToEnd(std::move(car));
+    car_repo->addToEnd(car);
+    setCarRepo(car_repo);
 }
 
 bool Car_Controller::delete_car(Car car) {
-    if(car_repo->remove(std::move(car)))
+    if(car_repo->remove(car))
         return true;
     return false;
 
@@ -61,9 +61,9 @@ std::vector<Car> Car_Controller::asc_sort() {
     std::vector<Car> cars;
     for(int i=0;i<car_repo->getStorage().size();i++)
     {
-        sort(cars.begin(), cars.end(), bypreis);
         cars.push_back(car_repo->getStorage()[i]);
     }
+    sort(cars.begin(), cars.end(), bypreis);
     return cars;
 }
 
@@ -84,4 +84,12 @@ void Car_Controller::printCar(Car car) {
 
 Car_Controller::Car_Controller() {
 
+}
+
+int Car_Controller::findId() {
+    int max=0;
+    for(int i=0;i<car_repo->getStorage().size();i++)
+        if(car_repo->getStorage()[i].getId()>max)
+            max=car_repo->getStorage()[i].getId();
+    return max+1;
 }

@@ -12,10 +12,6 @@ const std::string &Car::getRegistrationYear() const {
     return registration_year;
 }
 
-int Car::getRegistrationYearAsNum() const {
-    return 0;
-}
-
 int Car::getKilometrage() const {
     return kilometrage;
 }
@@ -65,4 +61,12 @@ Car::Car(const std::string &carModel, const std::string &carMake, const std::str
                                                         registration_year(registrationYear), kilometrage(kilometrage),
                                                         price(price), charge_time_minutes(chargeTimeMinutes),
                                                         range(range) {}
+
+int Car::getId() const {
+    return ID;
+}
+
+void Car::setId(int id) {
+    ID = id;
+}
 

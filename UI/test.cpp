@@ -1,59 +1,72 @@
-#include "Car_Controller.h"
-#include <cassert>
+#include "test.h"
 
 
+void test::testAdd() {
 
-void testAdd() {
-
-    Car_Controller repo;
-    auto testrepo = Car_Controller(repo);
     auto c1=Car("Tesla Model S", "Tesla", "22.02.2022", 700, 250, 22, 11);
     auto c2=Car("Tesla Model 3", "Tesla", "21.02.2022", 150, 250, 22, 11);
     auto c3=Car("Tesla Model Y", "Tesla", "20.02.2022", 1000, 250, 22, 11);
-    testrepo.add_car(c1);
-    testrepo.add_car(c2);
-    testrepo.add_car(c3);
-    assert(testrepo.getCarRepo()->getStorage().size()==3);
+    control.add_car(c1);
+    control.add_car(c2);
+    control.add_car(c3);
+    assert(control.getCarRepo()->getStorage().size()==3);
+}
 
+void test::testDelete() {
+    auto c4=Car("Tesla Model S", "Tesla", "22.02.2022", 700, 250, 22, 11);
+    auto c5=Car("Tesla Model 3", "Tesla", "21.02.2022", 150, 250, 22, 11);
+    auto c6=Car("Tesla Model Y", "Tesla", "20.02.2022", 1000, 250, 22, 11);
+    control.add_car(c4);
+    control.add_car(c5);
+    control.add_car(c6);
+    control.delete_car(c4);
+    control.delete_car(c5);
+    control.delete_car(c6);
+    assert(control.getCarRepo()->getStorage().size()==3);
+}
+
+void test::testFilter() {
+    control.filter_car(702);
+    assert(control.filter_car(702).size()==2);
+}
+
+void test::testSearch() {
+    auto c1=Car("Tesla Model S", "Tesla", "22.02.2022", 700, 250, 22, 11);
+    auto c2=Car("Tesla Model 3", "Tesla", "21.02.2022", 150, 150, 22, 11);
+    control.add_car(c1);
+    assert(control.search_car("Tesla Model 3","Tesla").size()==1);
+
+}
+
+void test::testFilterPreis() {
+    auto c1=Car("Tesla Model S", "Tesla", "22.02.2022", 700, 250, 22, 11);
+    auto c2=Car("Tesla Model 3", "Tesla", "21.02.2022", 150, 150, 22, 11);
+    control.add_car(c1);
+    control.add_car(c2);
+    assert(control.asc_sort()[0].getCarModel()=="Tesla Model 3" && control.asc_sort()[1].getCarModel()=="Tesla Model S");
 
 }
 
 
-void testdelete()
-{
-
-    Car_Controller repo;
-    auto testrepo = Car_Controller(repo);
+void test::testUpdateCar() {
     auto c1=Car("Tesla Model S", "Tesla", "22.02.2022", 700, 250, 22, 11);
-    auto c2=Car("Tesla Model 3", "Tesla", "21.02.2022", 150, 250, 22, 11);
-    auto c3=Car("Tesla Model Y", "Tesla", "20.02.2022", 1000, 250, 22, 11);
-    testrepo.add_car(c1);
-    testrepo.add_car(c2);
-    testrepo.add_car(c3);
-    testrepo.delete_car(c1);
-    testrepo.delete_car(c2);
-    testrepo.delete_car(c3);
-    assert(testrepo.getCarRepo()->getStorage().size()==0);
-
+    auto c2=Car("Tesla Model 3", "Tesla", "21.02.2022", 150, 150, 22, 11);
+    assert(control.update_car(c1,c2)== true);
 
 }
 
-void testfilter()
-{
-    Car_Controller repo;
-    auto testrepo = Car_Controller(repo);
-    auto c1=Car("Tesla Model S", "Tesla", "22.02.2022", 700, 250, 22, 11);
-    auto c2=Car("Tesla Model 3", "Tesla", "21.02.2022", 150, 250, 22, 11);
-    auto c3=Car("Tesla Model Y", "Tesla", "20.02.2022", 1000, 250, 22, 11);
-    testrepo.add_car(c1);
-    testrepo.add_car(c2);
-    testrepo.add_car(c3);
-    testrepo.filter_car(702);
-    assert(testrepo.filter_car(702).size()==2);
 
-
-
+void test::testAll() {
+    testAdd();
+    testDelete();
+    testFilter();
+    testSearch();
+    testFilterPreis();
+    testUpdateCar();
 }
+
+test::test(Car_Controller controller):control(controller){}
+
 
 
 
