@@ -3,12 +3,12 @@
 #include "Car_Controller.h"
 
 
-class csv {
+class CSVRepository {
 private:
     Car_Controller control;
 public:
     void uptofile();
-    csv(Car_Controller controller): control(controller){}
+    CSVRepository(Car_Controller controller): control(controller){}
 
 
 

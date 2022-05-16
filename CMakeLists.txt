@@ -20,6 +20,6 @@ add_executable(Auto_Shop
         App.cpp
         UI/test.cpp
         UI/test.h
-        RepoInFile/csv.cpp
-        RepoInFile/csv.h
+        RepoInFile/CSVRepository.cpp
+        RepoInFile/CSVRepository.h
         )

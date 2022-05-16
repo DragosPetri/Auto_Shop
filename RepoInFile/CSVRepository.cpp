@@ -1,7 +1,7 @@
-#include "csv.h"
+#include "CSVRepository.h"
 
 
-void csv::uptofile() {
+void CSVRepository::uptofile() {
     std::ofstream f("carlist.txt");
     for(int i=0;i<control.getCarRepo()->getStorage().size();i++)
     {
