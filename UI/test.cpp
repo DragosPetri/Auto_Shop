@@ -55,7 +55,6 @@ void test::testUpdateCar() {
 
 }
 
-
 void test::testAll() {
     testAdd();
     testDelete();

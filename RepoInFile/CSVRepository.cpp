@@ -2,7 +2,7 @@
 
 
 void CSVRepository::uptofile() {
-    std::ofstream f("carlist.txt");
+    std::ofstream f("RepoInFile/carlist.txt");
     for(int i=0;i<control.getCarRepo()->getStorage().size();i++)
     {
         f<<control.getCarRepo()->getStorage()[i].getId()<<" ";

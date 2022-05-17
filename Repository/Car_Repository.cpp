@@ -15,6 +15,8 @@ void Car_Repository::setStorage(const std::vector<Car> &storage) {
 
 void Car_Repository::addToEnd(Car car) {
     storage.push_back(car);
+    car.setId(findId(car));
+    setStorage(storage);
 }
 
 bool Car_Repository::remove(Car car) {
@@ -31,6 +33,13 @@ Car_Repository::Car_Repository() {
 
 }
 
+int Car_Repository::findId(Car car) {
+    int max=0;
+    for(int i=0;i<getStorage().size();i++)
+        if(getStorage()[i].getId()>max)
+            max=getStorage()[i].getId();
+    return max+1;
+}
 
 
 

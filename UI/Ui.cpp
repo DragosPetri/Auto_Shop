@@ -59,7 +59,7 @@ void Ui::startClientApp() {
 }
 
 void Ui::printCar(Car car) {
-    std::cout << car.getCarModel() << " " << car.getCarMake() << " " << car.getRegistrationYear() << " " << car.getPrice() << " " << car.getChargeTimeMinutes() << " " <<car.getKilometrage() << " " <<car.getRange() << " " <<std::endl;
+    std::cout << car.getId() <<" "<< car.getCarModel() << " " << car.getCarMake() << " " << car.getRegistrationYear() << " " << car.getPrice() << " " << car.getKilometrage() << " " <<car.getChargeTimeMinutes() << " " <<car.getRange() << " " <<std::endl;
 }
 
 void Ui::printCars(std::vector<Car> cars) {
@@ -70,7 +70,11 @@ void Ui::printCars(std::vector<Car> cars) {
 
 Car Ui::readCar() {
     std::string carModel, carMake, registrationYear;
-    int price, chargeTimeMinutes, range, kilometrage;
+    int price, chargeTimeMinutes, range, kilometrage, id = 0;
+
+    std::cout << "Car ID : ";
+    std::cin >> id;
+    std::cout << std::endl;
 
     std::cout << "Car Model : ";
     std::cin.ignore();
@@ -101,7 +105,7 @@ Car Ui::readCar() {
     std::cout << "Kilometrage? :) : ";
     std::cin >> kilometrage;
     std::cout << std::endl;
-    return {carModel, carMake, registrationYear, kilometrage, price, chargeTimeMinutes, range};
+    return {id,carModel, carMake, registrationYear, kilometrage, price, chargeTimeMinutes, range};
 }
 
 void Ui::showManagerMenu() {
@@ -158,7 +162,15 @@ void Ui::start() {
     if (type == CLIENT) {
         startClientApp();
     }
+    testAll();
 }
 
 Ui::Ui(Car_Controller controller) : controller(controller){
+}
+
+void Ui::testAll() {
+    std::shared_ptr<Car_Repository> rep = std::make_shared<Car_Repository>();
+    Car_Controller ct(rep);
+    test test(ct);
+    test.testAll();
 }
