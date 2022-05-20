@@ -1,17 +1,21 @@
 #pragma once
 #include "Car_Repository.h"
+#include "CSVRepository.h"
 #include <vector>
 
 class Car_Controller {
 private:
     std::shared_ptr<Car_Repository> car_repo;
+    std::shared_ptr<CSVRepository> csv_car_repo;
     std::vector<Car> favorites;
-
 
 public:
     explicit Car_Controller(std::shared_ptr<Car_Repository> &carRepo);
+    explicit Car_Controller(std::shared_ptr<CSVRepository> &csvCarRepo);
     std::shared_ptr<Car_Repository> getCarRepo() const;
     void setCarRepo(std::shared_ptr<Car_Repository> carRepo);
+    std::shared_ptr<CSVRepository> getCsvCarRepo() const;
+    void setCsvCarRepo(std::shared_ptr<CSVRepository> csvCarRepo);
     void add_car(Car car);
     bool delete_car(Car car);
     bool update_car(Car old_car, Car new_car);

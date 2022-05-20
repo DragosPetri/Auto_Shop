@@ -70,11 +70,7 @@ void Ui::printCars(std::vector<Car> cars) {
 
 Car Ui::readCar() {
     std::string carModel, carMake, registrationYear;
-    int price, chargeTimeMinutes, range, kilometrage, id = 0;
-
-    std::cout << "Car ID : ";
-    std::cin >> id;
-    std::cout << std::endl;
+    int price, chargeTimeMinutes, range, kilometrage;
 
     std::cout << "Car Model : ";
     std::cin.ignore();
@@ -105,7 +101,7 @@ Car Ui::readCar() {
     std::cout << "Kilometrage? :) : ";
     std::cin >> kilometrage;
     std::cout << std::endl;
-    return {id,carModel, carMake, registrationYear, kilometrage, price, chargeTimeMinutes, range};
+    return {carModel, carMake, registrationYear, kilometrage, price, chargeTimeMinutes, range};
 }
 
 void Ui::showManagerMenu() {
@@ -171,6 +167,6 @@ Ui::Ui(Car_Controller controller) : controller(controller){
 void Ui::testAll() {
     std::shared_ptr<Car_Repository> rep = std::make_shared<Car_Repository>();
     Car_Controller ct(rep);
-    test test(ct);
-    test.testAll();
+    //test test(ct);
+    //test.testAll();
 }

@@ -56,12 +56,6 @@ void Car::setRange(int range) {
     Car::range = range;
 }
 
-Car::Car(int id,const std::string &carModel, const std::string &carMake, const std::string &registrationYear, int kilometrage,
-         int price, int chargeTimeMinutes, int range) : ID(id),car_model(carModel), car_make(carMake),
-                                                        registration_year(registrationYear), kilometrage(kilometrage),
-                                                        price(price), charge_time_minutes(chargeTimeMinutes),
-                                                        range(range) {}
-
 int Car::getId() const {
     return ID;
 }
@@ -69,4 +63,19 @@ int Car::getId() const {
 void Car::setId(int id) {
     ID = id;
 }
+
+Car::Car(int id,const std::string &carModel, const std::string &carMake, const std::string &registrationYear, int kilometrage,
+         int price, int chargeTimeMinutes, int range) : ID(id),car_model(carModel), car_make(carMake),
+                                                        registration_year(registrationYear), kilometrage(kilometrage),
+                                                        price(price), charge_time_minutes(chargeTimeMinutes),
+                                                        range(range) {}
+Car::Car(const std::string &carModel, const std::string &carMake, const std::string &registrationYear, int kilometrage,
+         int price, int chargeTimeMinutes, int range) :car_model(carModel), car_make(carMake),
+registration_year(registrationYear), kilometrage(kilometrage),
+price(price), charge_time_minutes(chargeTimeMinutes),
+range(range) {}
+
+
+
+
 

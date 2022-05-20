@@ -1,7 +1,3 @@
-//
-// Created by Tudor Esan on 03.05.2022.
-//
-
 #pragma once
 #define CLIENT 1
 #define MANAGER 0

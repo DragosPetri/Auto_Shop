@@ -1,5 +1,4 @@
 #include <Car_Controller.h>
-#include <Car_Repository.h>
 #include <Ui.h>
 #include <vector>
 #include <Car.h>
@@ -15,11 +14,20 @@ int main()
         Car(5,"Dacia Spring", "Dacia", "24.02.2022", 1, 1, 0, 100),
         Car(6,"E-Tron", "Audi", "25.02.2022", 150, 250, 22, 11)};
 
-    std::shared_ptr<Car_Repository> repo1 = std::make_shared<Car_Repository>(cars);
-    auto controller = Car_Controller(repo1);
-    auto ui = Ui(controller);
-    ui.start();
-
-
+    std::cout << "Select type / persistent 0 / in-memory 1 ";
+    bool type;
+    std::cin >> type;
+    if (type == 0) {
+        std::shared_ptr<CSVRepository> repo1 = std::make_shared<CSVRepository>();
+        auto controller = Car_Controller(repo1);
+        auto ui = Ui(controller);
+        ui.start();
+    }
+    if (type == 1) {
+        std::shared_ptr<Car_Repository> repo1 = std::make_shared<Car_Repository>(cars);
+        auto controller = Car_Controller(repo1);
+        auto ui = Ui(controller);
+        ui.start();
+    }
     return 0;
 }

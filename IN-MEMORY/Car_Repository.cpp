@@ -2,21 +2,18 @@
 
 Car_Repository::Car_Repository(const std::vector<Car> &storage) : storage(storage) {}
 
+
 const std::vector<Car> &Car_Repository::getStorage() const {
     return storage;
-
 }
 
 void Car_Repository::setStorage(const std::vector<Car> &storage) {
     Car_Repository::storage = storage;
-
-
 }
 
 void Car_Repository::addToEnd(Car car) {
+    car.setId(findId());
     storage.push_back(car);
-    car.setId(findId(car));
-    setStorage(storage);
 }
 
 bool Car_Repository::remove(Car car) {
@@ -29,16 +26,16 @@ bool Car_Repository::remove(Car car) {
     return false;
 }
 
-Car_Repository::Car_Repository() {
-
+int Car_Repository::findId() {
+    int max=0;
+    for(auto & i : storage)
+        if(i.getId()>max)
+            max=i.getId();
+    return max+1;
 }
 
-int Car_Repository::findId(Car car) {
-    int max=0;
-    for(int i=0;i<getStorage().size();i++)
-        if(getStorage()[i].getId()>max)
-            max=getStorage()[i].getId();
-    return max+1;
+Car_Repository::Car_Repository() {
+
 }
 
 

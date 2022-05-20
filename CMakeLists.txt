@@ -3,23 +3,26 @@ project(Auto_Shop)
 
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(Controller)
-include_directories(Domain)
-include_directories(Repository)
+include_directories(CONTROLLER)
+include_directories(DOMAIN)
+include_directories(IN-MEMORY)
 include_directories(UI)
+include_directories(CSV-FILE-REPOSITORY)
+include_directories(REPOSITORY)
 
 add_executable(Auto_Shop
         UI/Ui.cpp
         UI/Ui.h
-        Controller/Car_Controller.cpp
-        Controller/Car_Controller.h
-        Domain/Car.cpp
-        Domain/Car.h
-        Repository/Car_Repository.cpp
-        Repository/Car_Repository.h
+        CONTROLLER/Car_Controller.cpp
+        CONTROLLER/Car_Controller.h
+        DOMAIN/Car.cpp
+        DOMAIN/Car.h
+        IN-MEMORY/Car_Repository.cpp
+        IN-MEMORY/Car_Repository.h
         App.cpp
-        UI/test.cpp
+        UI/test.cppT
         UI/test.h
-        RepoInFile/CSVRepository.cpp
-        RepoInFile/CSVRepository.h
+        CSV-FILE-REPOSITORY/CSVRepository.cpp
+        CSV-FILE-REPOSITORY/CSVRepository.h
+        REPOSITORY/CRUD-Repository.h
         )

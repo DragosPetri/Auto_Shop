@@ -51,6 +51,9 @@ public:
 
     Car(int id,const std::string &carModel, const std::string &carMake, const std::string &registrationYear, int kilometrage,
         int price, int chargeTimeMinutes, int range);
+
+    Car(const std::string &carModel, const std::string &carMake, const std::string &registrationYear, int kilometrage,
+        int price, int chargeTimeMinutes, int range);
 };
 
 
